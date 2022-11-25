@@ -7,6 +7,7 @@ import { ethers } from "ethers";
 import fs from "fs";
 import "hardhat-deploy";
 import { HardhatUserConfig, task } from "hardhat/config";
+const { mnemonic } = require('./secret.json');
 
 require("dotenv").config();
 
@@ -84,10 +85,7 @@ const config: HardhatUserConfig = {
           forking: {
             url: process.env.BSC_ARCHIVE_NODE || "",
           },
-          accounts: {
-            mnemonic: 'below autumn swarm fall hold behind delay talk dash inherit cheese panel',
-            initialIndex: 1
-          },
+          accounts: { mnemonic: mnemonic },
           gas: 2100000,
           gasPrice: 8000000000
         };

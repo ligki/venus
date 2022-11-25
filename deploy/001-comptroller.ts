@@ -2,7 +2,6 @@ import { DeployFunction } from "hardhat-deploy/types";
 import { HardhatRuntimeEnvironment } from "hardhat/types";
 
 const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
-  console.log('001')
   const { deployments, getNamedAccounts } = hre;
   const { deploy } = deployments;
 
@@ -11,8 +10,20 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const deployerSigner = await hre.ethers.getSigner(deployer);
   const address = await deployerSigner.getAddress();
   console.log(address);
-  const balance = await deployerSigner.getBalance();
-  console.log(balance.toString());
+
+  await deploy("VBep20Delegate", {
+    from: deployer,
+    args: [],
+    log: true,
+    autoMine: true,
+  });
+
+  await deploy("Unitroller", {
+    from: deployer,
+    args: [],
+    log: true,
+    autoMine: true,
+  });
 
   await deploy("AccessControlManager", {
     from: deployer,
