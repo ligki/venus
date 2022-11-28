@@ -54,6 +54,8 @@ async function main() {
         autoMine: true,
     });
 
+    const vBep20DelegatorDeployment = await deployments.get("VBep20Delegator");
+    console.log(vBep20DelegatorDeployment.address)
 }
 
 // We recommend this pattern to be able to use async/await everywhere
@@ -63,10 +65,10 @@ main().catch((error) => {
     process.exitCode = 1;
 });
 
-function encodeParameters(types, values) {
+function encodeParameters(types: string[], values: any[]) {
     const abi = new ethers.utils.AbiCoder();
-    const valuesPatched = values.map(v => {
-        return v instanceof BigNum ? v.toFixed() : v;
+    const valuesPatched = values.map((v: number) => {
+        return !(v instanceof BigNum) ? v : v.toFixed();
     });
     return abi.encode(types, valuesPatched);
 }

@@ -14,7 +14,6 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     log: true,
     autoMine: true,
   });
-  console.log('usdcDeployment ' + usdcDeployment.address)
 
   const ethDeployment = await deploy("ETH", {
     contract: "MockToken",
@@ -23,7 +22,6 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     log: true,
     autoMine: true,
   });
-  console.log('ETH ' + ethDeployment.address)
 
   const comptrollerDeployment = await deployments.get("Comptroller");
 

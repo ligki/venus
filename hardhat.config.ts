@@ -44,7 +44,7 @@ task("run-script", "Runs a hardhard script by name")
   });
 
 const config: HardhatUserConfig = {
-  defaultNetwork: "hardhat",
+  defaultNetwork: "bsctestnet",
   solidity: {
     compilers: [
       {
