@@ -22,6 +22,7 @@
   "author": "Venus",
   "license": "BSD-3-Clause",
   "dependencies": {
+    "@openzeppelin/hardhat-upgrades": "^1.21.0",
     "dotenv": "^16.0.1",
     "eth-saddle": "^0.1.25"
   },

@@ -68,6 +68,8 @@ main().catch((error) => {
 function encodeParameters(types: string[], values: any[]) {
     const abi = new ethers.utils.AbiCoder();
     const valuesPatched = values.map((v: number) => {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         return !(v instanceof BigNum) ? v : v.toFixed();
     });
     return abi.encode(types, valuesPatched);

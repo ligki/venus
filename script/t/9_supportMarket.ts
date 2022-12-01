@@ -1,7 +1,7 @@
-import { DeployFunction } from "hardhat-deploy/types";
-import { HardhatRuntimeEnvironment } from "hardhat/types";
+const hre = require("hardhat");
 
-const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
+
+async function main() {
     const { deployments, getNamedAccounts, ethers } = hre;
     const { deployer } = await getNamedAccounts();
     const deployerSigner = await hre.ethers.getSigner(deployer);
@@ -15,9 +15,9 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     await comptroller.connect(deployerSigner)._supportMarket(vUSDC.address);
     await comptroller.connect(deployerSigner)._supportMarket(vETH.address);
 
+}
 
-};
-
-func.tags = ["VBep20"];
-
-export default func;
+main().catch((error) => {
+    console.error(error)
+    process.exitCode = 1
+})

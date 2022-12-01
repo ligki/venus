@@ -18,14 +18,15 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     autoMine: true,
   });
 
-  await deploy("Unitroller", {
+
+  await deploy("AccessControlManager", {
     from: deployer,
     args: [],
     log: true,
     autoMine: true,
   });
 
-  await deploy("AccessControlManager", {
+  await deploy("Unitroller", {
     from: deployer,
     args: [],
     log: true,

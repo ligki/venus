@@ -8,6 +8,8 @@ import fs from "fs";
 import "hardhat-deploy";
 import { HardhatUserConfig, task } from "hardhat/config";
 const { mnemonic } = require('./secret.json');
+import '@openzeppelin/hardhat-upgrades';
+
 
 require("dotenv").config();
 
